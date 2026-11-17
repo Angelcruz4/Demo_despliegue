@@ -1,5 +1,5 @@
 name: Comprobar script y preparar version
-on:
+"on":
   push:
     branches:
       - main
@@ -15,14 +15,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configurar PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f
         with:
           php-version: '8.2'
           coverage: none
 
       - name: Ejecutar scripts
         shell: pwsh
-        run: ./desplegar.ps1 -RutaPHP 'php'
+        run: .\desplegar.ps1 -RutaPHP 'php' -NoIniciarServidor
 
       - name: Guardar version preparada
         uses: actions/upload-artifact@v4
